@@ -39,6 +39,9 @@ internal static class LinkExtensions
             case Link.CrossDouble:
                 RenderDouble("x", '-', "-x");
                 break;
+            case Link.Invisible:
+                RenderDouble("~", '~', "~");
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(link), link, null);
         }

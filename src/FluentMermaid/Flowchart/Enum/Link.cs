@@ -46,4 +46,9 @@ public enum Link
     /// x--x
     /// </summary>
     CrossDouble,
+
+    /// <summary>
+    /// ~~~
+    /// </summary>
+    Invisible,
 }
