@@ -8,7 +8,7 @@ internal static class VisibilityExtensions
     
     public static char Render(this Visibility visibility, bool beforeMemberDefinition)
     {
-        Visibility checkType = beforeMemberDefinition
+        var checkType = beforeMemberDefinition
             ? Visibility.Public | Visibility.Private | Visibility.Protected | Visibility.Internal
             : Visibility.Abstract | Visibility.Static;
 

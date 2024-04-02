@@ -38,7 +38,7 @@ internal class ClassMemberFunctionNode : IClassMemberFunction
             .Append('(');
         
         if (Arguments is not null)
-            foreach (FunctionArgument functionArgument in Arguments)
+            foreach (var functionArgument in Arguments)
                 functionArgument.RenderTo(builder);
 
         builder

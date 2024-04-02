@@ -59,10 +59,10 @@ internal class FlowchartRootNode : IFlowChart
         builder.Append("flowchart ");
         builder.AppendLine(Orientation.Render());
 
-        foreach (INode node in Nodes)
+        foreach (var node in Nodes)
             node.RenderTo(builder);
 
-        foreach (Relation relation in Relations)
+        foreach (var relation in Relations)
             relation.RenderTo(builder);
         
         Interaction.RenderTo(builder);

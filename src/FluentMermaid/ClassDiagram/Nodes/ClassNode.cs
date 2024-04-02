@@ -72,7 +72,7 @@ internal class ClassNode : IClass
         {
             builder.AppendLine(" {");
             
-            foreach (IClassMember member in _members)
+            foreach (var member in _members)
                 member.RenderTo(builder);
             
             builder.Append("}");

@@ -114,8 +114,8 @@ public class SequenceDiagramBuilder : ISequenceDiagram
     {
         _ = blocks ?? throw new ArgumentNullException(nameof(blocks));
 
-        bool isFirst = true;
-        foreach ((string? title, Action<ISequenceDiagram>? action) in blocks)
+        var isFirst = true;
+        foreach ((var title, Action<ISequenceDiagram>? action) in blocks)
         {
             _actions.Add(new ParallelStart(title, isFirst));
             
@@ -149,10 +149,10 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         if (_autoNumber)
             builder.AppendLine("autonumber");
 
-        foreach (Member member in _members)
+        foreach (var member in _members)
             member.RenderTo(builder);
 
-        foreach (Member member in _members)
+        foreach (var member in _members)
         {
             if (member.Links.Count <= 0) continue;
 
@@ -161,8 +161,8 @@ public class SequenceDiagramBuilder : ISequenceDiagram
                 .Append(member.Id)
                 .Append(": {");
 
-            bool first = true;
-            foreach (MemberLink memberLink in member.Links)
+            var first = true;
+            foreach (var memberLink in member.Links)
             {
                 if (!first)
                     builder.Append(", ");

@@ -17,8 +17,8 @@ internal static class StringBuilderExtensions
         if (values is null)
             return builder;
         
-        bool first = true;
-        foreach (string value in values)
+        var first = true;
+        foreach (var value in values)
         {
             if (!first)
                 builder.Append(separator);
@@ -37,7 +37,7 @@ internal static class StringBuilderExtensions
 
         var isUnicodeExpectation = false;
         var unicodeBuffer = new List<char>(0);
-        foreach (char ch in text)
+        foreach (var ch in text)
         {
             if (isUnicodeExpectation)
             {
@@ -63,7 +63,7 @@ internal static class StringBuilderExtensions
             if (ch == '#')
             {
                 isUnicodeExpectation = true;
-                unicodeBuffer = new List<char>() { ch };
+                unicodeBuffer = new List<char> { ch };
                 continue;
             }
 
@@ -73,9 +73,10 @@ internal static class StringBuilderExtensions
         return builder;
     }
 
+    // ReSharper disable once UnusedMethodReturnValue.Local - Justification: Used for fluent extending
     private static StringBuilder WriteWithReplacement(this StringBuilder builder, char ch)
     {
-        if (EscapeCharacters.TryGetValue(ch, out string? replacement))
+        if (EscapeCharacters.TryGetValue(ch, out var replacement))
             builder.Append(replacement);
         else
             builder.Append(ch);

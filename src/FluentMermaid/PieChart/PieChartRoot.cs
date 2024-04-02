@@ -57,7 +57,7 @@ internal class PieChartRoot : IPieChart
                 .Append("title ")
                 .AppendLine(Title);
 
-        foreach (IValue value in _values)
+        foreach (var value in _values)
             value.RenderTo(builder);
 
         return builder.ToString();
