@@ -2,7 +2,7 @@
 
 public interface IPieChart
 {
-    string? Title { get; }
+    string Title { get; }
 
     bool ShowData { get; }
 

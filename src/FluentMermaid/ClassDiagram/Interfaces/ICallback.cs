@@ -8,5 +8,5 @@ public interface ICallback : IRenderTo<StringBuilder>
     
     string Function { get; }
     
-    string? Tooltip { get; }
+    string Tooltip { get; }
 }

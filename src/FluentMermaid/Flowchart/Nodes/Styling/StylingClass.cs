@@ -3,14 +3,8 @@ using FluentMermaid.Flowchart.Interfaces.Styling;
 
 namespace FluentMermaid.Flowchart.Nodes.Styling;
 
-public record StylingClass : IStylingClass
+public record StylingClass(string Id, string Style) : IStylingClass
 {
-    public StylingClass(string Id, string Style)
-    {
-        this.Id = Id;
-        this.Style = Style;
-    }
-
     public void RenderTo(StringBuilder builder)
     {
         builder.Append("classDef ")
@@ -20,12 +14,12 @@ public record StylingClass : IStylingClass
             .AppendLine(";");
     }
 
-    public string Id { get; }
-    public string Style { get; }
+    public string Id { get; } = Id;
+    public string Style { get; } = Style;
 
-    public void Deconstruct(out string Id, out string Style)
+    public void Deconstruct(out string id, out string style)
     {
-        Id = this.Id;
-        Style = this.Style;
+        id = Id;
+        style = Style;
     }
 }

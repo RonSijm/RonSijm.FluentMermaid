@@ -8,7 +8,7 @@ public interface IStyling : INode
 
     void SetClass(INode node, string className);
     
-    string? DefaultStyle { get; set; }
+    string DefaultStyle { get; set; }
 
     IStylingClass AddClass(string css);
 }

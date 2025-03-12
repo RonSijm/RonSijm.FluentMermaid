@@ -7,13 +7,13 @@ internal class PieChartRoot : IPieChart
 {
     private readonly List<IValue> _values = new();
 
-    public PieChartRoot(string? title, bool showData)
+    public PieChartRoot(string title, bool showData)
     {
         Title = title;
         ShowData = showData;
     }
 
-    public string? Title { get; }
+    public string Title { get; }
     
     public bool ShowData { get; }
 
@@ -57,7 +57,7 @@ internal class PieChartRoot : IPieChart
                 .Append("title ")
                 .AppendLine(Title);
 
-        foreach (IValue value in _values)
+        foreach (var value in _values)
             value.RenderTo(builder);
 
         return builder.ToString();

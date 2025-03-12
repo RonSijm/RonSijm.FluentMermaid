@@ -4,5 +4,5 @@ namespace FluentMermaid.PieChart;
 
 public static class PieChart
 {
-    public static IPieChart Create(string? title, bool showData) => new PieChartRoot(title, showData);
+    public static IPieChart Create(string title, bool showData) => new PieChartRoot(title, showData);
 }

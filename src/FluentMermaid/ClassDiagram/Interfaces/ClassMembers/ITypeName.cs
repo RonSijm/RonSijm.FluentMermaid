@@ -6,5 +6,5 @@ public interface ITypeName : IRenderTo<StringBuilder>
 {
     string Name { get; }
     
-    string? GenericType { get; }
+    string GenericType { get; }
 }

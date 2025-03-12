@@ -53,7 +53,7 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         return this;
     }
 
-    public ISequenceDiagram Loop(string? title, Action<ISequenceDiagram> action)
+    public ISequenceDiagram Loop(string title, Action<ISequenceDiagram> action)
     {
          _ = action ?? throw new ArgumentNullException(nameof(action));
 
@@ -64,7 +64,7 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         return this;
     }
 
-    public ISequenceDiagram AltOr(string? altTitle, Action<ISequenceDiagram> altAction, string? orTitle,
+    public ISequenceDiagram AltOr(string altTitle, Action<ISequenceDiagram> altAction, string orTitle,
         Action<ISequenceDiagram> orAction)
     {
         _ = altAction ?? throw new ArgumentNullException(nameof(altAction));
@@ -79,7 +79,7 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         return this;
     }
 
-    public ISequenceDiagram Optional(string? title, Action<ISequenceDiagram> action)
+    public ISequenceDiagram Optional(string title, Action<ISequenceDiagram> action)
     {
         _ = action ?? throw new ArgumentNullException(nameof(action));
         
@@ -110,12 +110,12 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         return this;
     }
 
-    public ISequenceDiagram Parallel(IEnumerable<(string? title, Action<ISequenceDiagram>? action)> blocks)
+    public ISequenceDiagram Parallel(IEnumerable<(string title, Action<ISequenceDiagram> action)> blocks)
     {
         _ = blocks ?? throw new ArgumentNullException(nameof(blocks));
 
-        bool isFirst = true;
-        foreach ((string? title, Action<ISequenceDiagram>? action) in blocks)
+        var isFirst = true;
+        foreach ((var title, Action<ISequenceDiagram> action) in blocks)
         {
             _actions.Add(new ParallelStart(title, isFirst));
             
@@ -128,7 +128,7 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         return this;
     }
 
-    public ISequenceDiagram Parallel(params (string? title, Action<ISequenceDiagram>? action)[] blocks)
+    public ISequenceDiagram Parallel(params (string title, Action<ISequenceDiagram> action)[] blocks)
         => Parallel(blocks.AsEnumerable());
 
     public ISequenceDiagram Rect(Color color, Action<ISequenceDiagram> action)
@@ -149,10 +149,10 @@ public class SequenceDiagramBuilder : ISequenceDiagram
         if (_autoNumber)
             builder.AppendLine("autonumber");
 
-        foreach (Member member in _members)
+        foreach (var member in _members)
             member.RenderTo(builder);
 
-        foreach (Member member in _members)
+        foreach (var member in _members)
         {
             if (member.Links.Count <= 0) continue;
 
@@ -161,8 +161,8 @@ public class SequenceDiagramBuilder : ISequenceDiagram
                 .Append(member.Id)
                 .Append(": {");
 
-            bool first = true;
-            foreach (MemberLink memberLink in member.Links)
+            var first = true;
+            foreach (var memberLink in member.Links)
             {
                 if (!first)
                     builder.Append(", ");

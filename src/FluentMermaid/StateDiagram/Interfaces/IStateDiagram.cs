@@ -21,15 +21,15 @@ public interface IStateDiagram
 
     ITransition StartTo(IState state);
 
-    ITransition StartTo(IState state, string? description);
+    ITransition StartTo(IState state, string description);
 
     ITransition ToEnd(IState state);
     
-    ITransition ToEnd(IState state, string? description);
+    ITransition ToEnd(IState state, string description);
 
     ITransition Transition(IState from, IState to);
 
-    ITransition Transition(IState from, IState to, string? description);
+    ITransition Transition(IState from, IState to, string description);
 
     string Render();
 }

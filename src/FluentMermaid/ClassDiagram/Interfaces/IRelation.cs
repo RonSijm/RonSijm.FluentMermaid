@@ -19,5 +19,5 @@ public interface IRelation : IRenderTo<StringBuilder>
     
     Cardinality? ToCardinality { get; }
     
-    string? Label { get; }
+    string Label { get; }
 }

@@ -5,7 +5,7 @@ namespace FluentMermaid.ClassDiagram.Nodes;
 
 internal class Link : ILink
 {
-    public Link(IClass @class, Uri url, string? tooltip)
+    public Link(IClass @class, Uri url, string tooltip)
     {
         Class = @class;
         Url = url;
@@ -16,7 +16,7 @@ internal class Link : ILink
     
     public Uri Url { get; }
     
-    public string? Tooltip { get; }
+    public string Tooltip { get; }
     
     public void RenderTo(StringBuilder builder)
     {

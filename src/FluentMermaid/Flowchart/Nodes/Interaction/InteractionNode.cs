@@ -4,18 +4,13 @@ using FluentMermaid.Flowchart.Interfaces;
 
 namespace FluentMermaid.Flowchart.Nodes.Interaction;
 
-internal record InteractionNode : IInteraction
+internal record InteractionNode(string Id) : IInteraction
 {
     private readonly List<Callback> _callbacks = new();
     private readonly List<CallbackCall> _callbackCalls = new();
     private readonly List<Hyperlink> _hyperlinks = new();
 
-    public InteractionNode(string id)
-    {
-        Id = id;
-    }
-
-    public string Id { get; }
+    public string Id { get; } = Id;
 
     public void RenderTo(StringBuilder builder)
     {
@@ -33,8 +28,8 @@ internal record InteractionNode : IInteraction
     public void Hyperlink(INode node, Uri url, string tooltip, HyperlinkTarget target)
         => _hyperlinks.Add(new Hyperlink(node.Id, url, tooltip, target));
 
-    public void Deconstruct(out string Id)
+    public void Deconstruct(out string id)
     {
-        Id = this.Id;
+        id = Id;
     }
 }

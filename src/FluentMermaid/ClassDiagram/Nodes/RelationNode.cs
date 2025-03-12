@@ -15,7 +15,7 @@ internal class RelationNode : IRelation
         RelationLink relationLink,
         Cardinality? toCardinality,
         Relationship? toRelation,
-        string? label)
+        string label)
     {
         From = @from;
         To = to;
@@ -41,7 +41,7 @@ internal class RelationNode : IRelation
     
     public Cardinality? ToCardinality { get; }
 
-    public string? Label { get; }
+    public string Label { get; }
 
     public void RenderTo(StringBuilder builder)
     {

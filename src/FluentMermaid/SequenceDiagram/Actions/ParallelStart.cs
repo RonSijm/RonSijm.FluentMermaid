@@ -5,13 +5,13 @@ namespace FluentMermaid.SequenceDiagram.Actions;
 
 internal readonly struct ParallelStart : IAction
 {
-    public ParallelStart(string? title, bool isFirst)
+    public ParallelStart(string title, bool isFirst)
     {
         Title = title;
         IsFirst = isFirst;
     }
 
-    public string? Title { get; }
+    public string Title { get; }
 
     public bool IsFirst { get; }
 

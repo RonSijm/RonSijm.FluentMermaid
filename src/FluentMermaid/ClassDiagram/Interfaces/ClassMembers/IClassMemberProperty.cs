@@ -8,5 +8,5 @@ public interface IClassMemberProperty : IClassMember
     
     string Name { get; }
     
-    ITypeName? Type { get; }
+    ITypeName Type { get; }
 }

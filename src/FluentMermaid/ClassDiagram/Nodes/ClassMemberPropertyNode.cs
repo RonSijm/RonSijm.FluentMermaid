@@ -7,7 +7,7 @@ namespace FluentMermaid.ClassDiagram.Nodes;
 
 internal class ClassMemberPropertyNode : IClassMemberProperty
 {
-    public ClassMemberPropertyNode(string name, ITypeName? type, Visibility? visibility)
+    public ClassMemberPropertyNode(string name, ITypeName type, Visibility? visibility)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Property name should not be null or empty", nameof(name));
@@ -21,7 +21,7 @@ internal class ClassMemberPropertyNode : IClassMemberProperty
 
     public string Name { get; }
 
-    public ITypeName? Type { get; }
+    public ITypeName Type { get; }
 
     public void RenderTo(StringBuilder builder)
     {

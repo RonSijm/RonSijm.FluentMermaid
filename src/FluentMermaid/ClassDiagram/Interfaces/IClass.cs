@@ -9,15 +9,15 @@ public interface IClass : IRenderTo<StringBuilder>
 {
     ITypeName Name { get; }
     
-    string? Annotation { get; }
+    string Annotation { get; }
     
-    string? CssClass { get; }
+    string CssClass { get; }
 
-    IClassMemberFunction AddFunction(string name, ITypeName? returnType, Visibility? visibility, params FunctionArgument[] arguments);
+    IClassMemberFunction AddFunction(string name, ITypeName returnType, Visibility? visibility, params FunctionArgument[] arguments);
 
-    IClassMemberProperty AddProperty(string name, ITypeName? type, Visibility? visibility);
+    IClassMemberProperty AddProperty(string name, ITypeName type, Visibility? visibility);
 
-    ICallback SetCallback(string function, string? tooltip);
+    ICallback SetCallback(string function, string tooltip);
 
-    ILink SetLink(Uri url, string? tooltip);
+    ILink SetLink(Uri url, string tooltip);
 }

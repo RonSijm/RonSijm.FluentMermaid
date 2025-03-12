@@ -10,8 +10,8 @@ namespace FluentMermaid.ClassDiagram;
 
 internal class ClassDiagramRoot : IClassDiagram
 {
-    private readonly List<IClass> _classes = new();
-    private readonly List<IRelation> _relations = new();
+    public List<IClass> Classes { get; } = new();
+    public List<IRelation> Relations { get; } = new();
     
     public ClassDiagramRoot(Orientation orientation)
     {
@@ -20,12 +20,12 @@ internal class ClassDiagramRoot : IClassDiagram
 
     public Orientation Orientation { get; }
 
-    public IClass AddClass(ITypeName typeName, string? annotation, string? cssClass)
+    public IClass AddClass(ITypeName typeName, string annotation, string cssClass)
     {
         _ = typeName ?? throw new ArgumentNullException(nameof(typeName));
         
         var @class = new ClassNode(typeName, annotation, cssClass);
-        _classes.Add(@class);
+        Classes.Add(@class);
         return @class;
     }
 
@@ -37,7 +37,7 @@ internal class ClassDiagramRoot : IClassDiagram
         Relationship? relationshipTo,
         Cardinality? cardinalityTo,
         RelationLink relationLink,
-        string? label)
+        string label)
     {
         var relation = new RelationNode(
             from,
@@ -48,7 +48,7 @@ internal class ClassDiagramRoot : IClassDiagram
             cardinalityTo,
             relationshipTo,
             label);
-        _relations.Add(relation);
+        Relations.Add(relation);
         return relation;
     }
 
@@ -58,8 +58,8 @@ internal class ClassDiagramRoot : IClassDiagram
         builder.AppendLine("classDiagram");
         builder.Append("direction ").AppendLine(Orientation.Render());
         
-        _relations.ForEach(r => r.RenderTo(builder));
-        _classes.ForEach(c => c.RenderTo(builder));
+        Relations.ForEach(r => r.RenderTo(builder));
+        Classes.ForEach(c => c.RenderTo(builder));
 
         return builder.ToString();
     }

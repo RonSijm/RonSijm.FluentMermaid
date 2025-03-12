@@ -18,7 +18,7 @@ internal sealed class StateDiagramRoot : StateDiagram
             .Append("direction ")
             .AppendLine(Orientation.Render());
 
-        base.RenderNodes(builder);
+        RenderNodes(builder);
 
         return builder.ToString();
     }

@@ -13,19 +13,19 @@ public interface ISequenceDiagram
 
     ISequenceDiagram Activate(IMember member, Action<ISequenceDiagram> action);
 
-    ISequenceDiagram Loop(string? title, Action<ISequenceDiagram> action);
+    ISequenceDiagram Loop(string title, Action<ISequenceDiagram> action);
 
-    ISequenceDiagram AltOr(string? altTitle, Action<ISequenceDiagram> altAction, string? orTitle, Action<ISequenceDiagram> orAction);
+    ISequenceDiagram AltOr(string altTitle, Action<ISequenceDiagram> altAction, string orTitle, Action<ISequenceDiagram> orAction);
 
-    ISequenceDiagram Optional(string? title, Action<ISequenceDiagram> action);
+    ISequenceDiagram Optional(string title, Action<ISequenceDiagram> action);
 
     ISequenceDiagram Note(IMember member, NoteLocation location, string text);
 
     ISequenceDiagram NoteOver(string text, params IMember[] members);
 
-    ISequenceDiagram Parallel(IEnumerable<(string? title, Action<ISequenceDiagram>? action)> blocks);
+    ISequenceDiagram Parallel(IEnumerable<(string title, Action<ISequenceDiagram> action)> blocks);
 
-    ISequenceDiagram Parallel(params (string? title, Action<ISequenceDiagram>? action)[] blocks);
+    ISequenceDiagram Parallel(params (string title, Action<ISequenceDiagram> action)[] blocks);
 
     ISequenceDiagram Rect(Color color, Action<ISequenceDiagram> action);
 

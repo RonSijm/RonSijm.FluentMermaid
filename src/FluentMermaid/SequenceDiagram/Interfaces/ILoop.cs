@@ -2,5 +2,5 @@
 
 public interface ILoop : IDisposable
 {
-    string? Title { get; }
+    string Title { get; }
 }

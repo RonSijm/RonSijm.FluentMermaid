@@ -3,13 +3,8 @@ using FluentMermaid.SequenceDiagram.Interfaces;
 
 namespace FluentMermaid.SequenceDiagram.Actions;
 
-internal record OptStart : IAction
+internal record OptStart(string Title) : IAction
 {
-    public OptStart(string? Title)
-    {
-        this.Title = Title;
-    }
-
     public void RenderTo(StringBuilder builder)
     {
         builder
@@ -17,10 +12,10 @@ internal record OptStart : IAction
             .AppendLine(Title);
     }
 
-    public string? Title { get; }
+    public string Title { get; } = Title;
 
-    public void Deconstruct(out string? Title)
+    public void Deconstruct(out string title)
     {
-        Title = this.Title;
+        title = Title;
     }
 }

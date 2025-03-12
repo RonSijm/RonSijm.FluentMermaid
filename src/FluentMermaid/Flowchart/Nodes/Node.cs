@@ -21,7 +21,7 @@ internal abstract record Node : INode
     
     public INode LinkTo(string text = "", int length = 1, Link linkType = Link.Arrow, params INode[] nodes)
     {
-        foreach (INode other in nodes)
+        foreach (var other in nodes)
             Graph.Link(this, other, linkType, text, length);
         
         return this;
@@ -29,7 +29,7 @@ internal abstract record Node : INode
 
     public INode LinkFrom(string text = "", int length = 1, Link linkType = Link.Arrow, params INode[] nodes)
     {
-        foreach (INode other in nodes)
+        foreach (var other in nodes)
             Graph.Link(other, this, linkType, text, length);
         
         return this;

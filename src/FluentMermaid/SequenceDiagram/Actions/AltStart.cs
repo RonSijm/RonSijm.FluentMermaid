@@ -5,12 +5,12 @@ namespace FluentMermaid.SequenceDiagram.Actions;
 
 internal readonly struct AltStart : IAction
 {
-    public AltStart(string? title)
+    public AltStart(string title)
     {
         Title = title;
     }
 
-    public string? Title { get; }
+    public string Title { get; }
 
     public void RenderTo(StringBuilder builder)
     {

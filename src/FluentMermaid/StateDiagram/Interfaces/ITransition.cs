@@ -8,5 +8,5 @@ public interface ITransition : IRenderTo<StringBuilder>
     
     IState To { get; }
     
-    string? Description { get; }
+    string Description { get; }
 }

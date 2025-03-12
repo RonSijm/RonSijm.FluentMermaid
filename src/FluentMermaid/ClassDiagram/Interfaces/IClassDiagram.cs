@@ -5,7 +5,10 @@ namespace FluentMermaid.ClassDiagram.Interfaces;
 
 public interface IClassDiagram
 {
-    IClass AddClass(ITypeName typeName, string? annotation, string? cssClass);
+    public List<IClass> Classes { get; }
+    public List<IRelation> Relations { get; }
+
+    IClass AddClass(ITypeName typeName, string annotation = null, string cssClass = null);
 
     IRelation Relation(
         IClass from,
@@ -15,7 +18,7 @@ public interface IClassDiagram
         Relationship? relationshipTo,
         Cardinality? cardinalityTo,
         RelationLink relationLink,
-        string? label);
+        string label);
 
     string Render();
 }

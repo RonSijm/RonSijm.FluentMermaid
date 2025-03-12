@@ -8,5 +8,5 @@ public interface ILink : IRenderTo<StringBuilder>
     
     Uri Url { get; }
     
-    string? Tooltip { get; }
+    string Tooltip { get; }
 }

@@ -6,23 +6,13 @@ using FluentMermaid.Flowchart.Interfaces;
 
 namespace FluentMermaid.Flowchart.Nodes;
 
-internal record SubGraphNode : ISubGraph
+internal record SubGraphNode(string Id, string Title, Orientation Orientation) : ISubGraph
 {
-    public SubGraphNode(
-        string id,
-        string title,
-        Orientation orientation)
-    {
-        Id = id;
-        Title = title;
-        Orientation = orientation;
-    }
+    public string Id { get; } = Id;
 
-    public string Id { get; }
-    
-    public string Title { get; }
-    
-    public Orientation Orientation { get; }
+    public string Title { get; } = Title;
+
+    public Orientation Orientation { get; } = Orientation;
 
     private HashSet<INode> Nodes { get; } = new();
 
@@ -56,10 +46,10 @@ internal record SubGraphNode : ISubGraph
             .Append("direction ")
             .AppendLine(Orientation.Render());
 
-        foreach (INode node in Nodes)
+        foreach (var node in Nodes)
             node.RenderTo(builder);
 
-        foreach (Relation relation in Relations)
+        foreach (var relation in Relations)
             relation.RenderTo(builder);
 
         builder.AppendLine("end");
@@ -70,7 +60,9 @@ internal record SubGraphNode : ISubGraph
     public void Link(INode @from, INode to, Link link, string text, int length = 1)
     {
         if (length < 1)
+        {
             throw new ArgumentException("Link length should be more or equal 1", nameof(length));
+        }
 
         Relation relation = new(from, to, link, text, length);
         Relations.Add(relation);

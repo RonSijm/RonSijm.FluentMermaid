@@ -9,7 +9,7 @@ internal class ClassNode : IClass
 {
     private readonly List<IClassMember> _members = new();
     
-    public ClassNode(ITypeName typeName, string? annotation, string? cssClass)
+    public ClassNode(ITypeName typeName, string annotation, string cssClass)
     {
         Name = typeName ?? throw new ArgumentNullException(nameof(typeName));
         Annotation = annotation;
@@ -18,36 +18,36 @@ internal class ClassNode : IClass
     
     public ITypeName Name { get; }
 
-    public string? Annotation { get; }
+    public string Annotation { get; }
 
-    public string? CssClass { get; }
+    public string CssClass { get; }
 
-    private ILink? Link { get; set; }
+    private ILink Link { get; set; }
     
-    private ICallback? Callback { get; set; }
+    private ICallback Callback { get; set; }
 
-    public IClassMemberFunction AddFunction(string name, ITypeName? returnType, Visibility? visibility, params FunctionArgument[] arguments)
+    public IClassMemberFunction AddFunction(string name, ITypeName returnType, Visibility? visibility, params FunctionArgument[] arguments)
     {
         var member = new ClassMemberFunctionNode(name, arguments, returnType, visibility);
         _members.Add(member);
         return member;
     }
 
-    public IClassMemberProperty AddProperty(string name, ITypeName? type, Visibility? visibility)
+    public IClassMemberProperty AddProperty(string name, ITypeName type, Visibility? visibility)
     {
         var member = new ClassMemberPropertyNode(name, type, visibility);
         _members.Add(member);
         return member;
     }
 
-    public ICallback SetCallback(string function, string? tooltip)
+    public ICallback SetCallback(string function, string tooltip)
     {
         var callback = new Callback(this, function, tooltip);
         Callback = callback;
         return callback;
     }
 
-    public ILink SetLink(Uri url, string? tooltip)
+    public ILink SetLink(Uri url, string tooltip)
     {
         var link = new Link(this, url, tooltip);
         Link = link;
@@ -72,7 +72,7 @@ internal class ClassNode : IClass
         {
             builder.AppendLine(" {");
             
-            foreach (IClassMember member in _members)
+            foreach (var member in _members)
                 member.RenderTo(builder);
             
             builder.Append("}");

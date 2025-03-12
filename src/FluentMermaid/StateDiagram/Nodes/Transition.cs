@@ -8,7 +8,7 @@ internal sealed class Transition : ITransition
     public Transition(
         IState @from,
         IState to,
-        string? description)
+        string description)
     {
         From = @from;
         To = to;
@@ -19,7 +19,7 @@ internal sealed class Transition : ITransition
     
     public IState To { get; }
     
-    public string? Description { get; }
+    public string Description { get; }
 
     public void RenderTo(StringBuilder builder)
     {

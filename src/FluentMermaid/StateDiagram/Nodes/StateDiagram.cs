@@ -72,19 +72,19 @@ internal abstract class StateDiagram : IStateDiagram
     public ITransition StartTo(IState state)
         => Transition(CornerState.Instance, state, null);
 
-    public ITransition StartTo(IState state, string? description)
+    public ITransition StartTo(IState state, string description)
         => Transition(CornerState.Instance, state, description);
 
     public ITransition ToEnd(IState state)
         => Transition(state, CornerState.Instance, null);
 
-    public ITransition ToEnd(IState state, string? description)
+    public ITransition ToEnd(IState state, string description)
         => Transition(state, CornerState.Instance, description);
 
     public ITransition Transition(IState from, IState to)
         => Transition(from, to, null);
 
-    public ITransition Transition(IState from, IState to, string? description)
+    public ITransition Transition(IState from, IState to, string description)
     {
         _ = from ?? throw new ArgumentNullException(nameof(from));
         _ = to ?? throw new ArgumentNullException(nameof(to));

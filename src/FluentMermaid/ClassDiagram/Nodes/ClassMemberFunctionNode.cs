@@ -9,8 +9,8 @@ internal class ClassMemberFunctionNode : IClassMemberFunction
 {
     public ClassMemberFunctionNode(
         string function,
-        FunctionArgument[]? arguments,
-        ITypeName? returnType,
+        FunctionArgument[] arguments,
+        ITypeName returnType,
         Visibility? visibility)
     {
         if (string.IsNullOrWhiteSpace(function))
@@ -26,9 +26,9 @@ internal class ClassMemberFunctionNode : IClassMemberFunction
     
     public string Function { get; }
     
-    public FunctionArgument[]? Arguments { get; }
+    public FunctionArgument[] Arguments { get; }
 
-    public ITypeName? ReturnType { get; }
+    public ITypeName ReturnType { get; }
 
     public void RenderTo(StringBuilder builder)
     {
@@ -38,7 +38,7 @@ internal class ClassMemberFunctionNode : IClassMemberFunction
             .Append('(');
         
         if (Arguments is not null)
-            foreach (FunctionArgument functionArgument in Arguments)
+            foreach (var functionArgument in Arguments)
                 functionArgument.RenderTo(builder);
 
         builder

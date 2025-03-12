@@ -5,7 +5,7 @@ namespace FluentMermaid.ClassDiagram.Nodes;
 
 internal class Callback : ICallback
 {
-    public Callback(IClass @class, string function, string? tooltip)
+    public Callback(IClass @class, string function, string tooltip)
     {
         if (string.IsNullOrWhiteSpace(function))
             throw new ArgumentException("Function name should not be null or empty", nameof(function));
@@ -19,7 +19,7 @@ internal class Callback : ICallback
     
     public string Function { get; }
     
-    public string? Tooltip { get; }
+    public string Tooltip { get; }
     
     public void RenderTo(StringBuilder builder)
     {
